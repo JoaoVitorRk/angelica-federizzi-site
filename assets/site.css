@@ -30,9 +30,9 @@ p{text-wrap:pretty}
 
 /* rótulos e ornamentos */
 .rot{font-family:var(--caps);font-size:10.5px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
-.orn{display:flex;align-items:center;gap:12px;margin-bottom:22px;color:var(--gold)}
-.orn::before,.orn::after{content:"";height:1px;width:38px;background:var(--gold);opacity:.6}
-.orn i{width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);display:block}
+.orn{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:22px;color:var(--gold)}
+.orn::before{content:"";width:1px;height:44px;background:linear-gradient(transparent,var(--gold));opacity:.8}
+.orn i{width:5px;height:5px;border-radius:50%;background:var(--ambar);box-shadow:0 0 10px 2px rgba(244,184,55,.45);display:block;margin-top:2px}
 .orn.c{justify-content:center}
 .centro{text-align:center}
 .centro .rot{margin-top:18px}
@@ -105,15 +105,17 @@ sup.conf{font-family:var(--display);color:var(--gold);font-size:.85em;line-heigh
 .hero .google b{font-family:var(--display);font-size:22px;letter-spacing:.02em;color:var(--papel);font-weight:400}
 .hero .google .est{color:var(--gold);letter-spacing:.12em;font-size:11px}
 .hero .google:hover{color:var(--gold)}
-.badge{position:absolute;z-index:2;top:42%;right:max(5%,calc((100vw - 1240px) / 2 + 40px));width:186px;height:186px;pointer-events:none;animation:gira 28s linear infinite}
-.badge svg{width:100%;height:100%;display:block;overflow:visible}
-.badge text{font-family:var(--caps);font-size:11px;letter-spacing:.3em;text-transform:uppercase;fill:var(--gold)}
-.badge circle.c{fill:none;stroke:var(--gold);stroke-opacity:.5;stroke-width:1}
-@keyframes gira{to{transform:rotate(360deg)}}
-.cue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:var(--caps);font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
-.cue i{width:18px;height:30px;border:1px solid var(--gold);border-radius:12px;position:relative;opacity:.8}
-.cue i::after{content:"";position:absolute;left:50%;top:7px;width:2px;height:6px;margin-left:-1px;border-radius:2px;background:var(--gold);animation:cue 1.8s ease-in-out infinite}
-@keyframes cue{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+/* fio de luz âmbar na margem direita (o LED da sala de fotos dela), com o nome na vertical */
+.fio-luz{position:absolute;z-index:2;top:calc(var(--aviso) + var(--topo) + 30px);bottom:30px;right:max(28px,calc((100vw - 1240px) / 2 + 20px));width:1px;pointer-events:none;
+  background:linear-gradient(transparent,var(--ambar) 18%,var(--ambar) 82%,transparent);box-shadow:0 0 16px 2px rgba(244,184,55,.35);opacity:.75;transform-origin:50% 0}
+.js .fio-luz{animation:luz-cresce 1.8s 1.2s cubic-bezier(.2,.7,.2,1) both}
+.fio-luz span{position:absolute;top:50%;right:14px;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-family:var(--caps);font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);white-space:nowrap;opacity:.9}
+/* convite para rolar: um ponto de luz descendo por um fio, na margem esquerda */
+.cue{position:absolute;left:var(--pad);bottom:34px;z-index:2;display:flex;align-items:flex-end;gap:12px;font-family:var(--caps);font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.cue i{display:block;width:1px;height:64px;background:linear-gradient(transparent,rgba(201,167,113,.6));position:relative;overflow:visible}
+.cue i::after{content:"";position:absolute;left:-2px;top:0;width:5px;height:5px;border-radius:50%;background:var(--ambar);box-shadow:0 0 10px 2px rgba(244,184,55,.6);animation:desce 2.4s ease-in-out infinite}
+.cue span{writing-mode:vertical-rl;transform:rotate(180deg);line-height:1}
+@keyframes desce{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(60px);opacity:0}}
 
 /* seções */
 section{position:relative;padding:clamp(88px,11vw,140px) 0}
@@ -330,7 +332,8 @@ dialog.demo .btn{padding:14px 22px;font-size:10px}
   .hero .quem{letter-spacing:.18em;font-size:10px;margin-bottom:24px;line-height:1.8}
   .hero .acoes .btn.linha{display:none}
   .hero .google{margin-top:22px}
-  .badge{width:108px;height:108px;top:calc(var(--aviso) + var(--topo) + 12px);bottom:auto;right:5%}
+  .fio-luz{right:14px;top:calc(var(--aviso) + var(--topo) + 10px);bottom:auto;height:44vh}
+  .fio-luz span{top:auto;bottom:0;transform:rotate(180deg)}
   .badge text{font-size:11px}
   .cue{display:none}
   .grade,.grade.inv{grid-template-columns:1fr;gap:40px}
