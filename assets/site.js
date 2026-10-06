@@ -43,7 +43,7 @@ demo && demo.querySelectorAll('[data-fecha]').forEach(b => b.addEventListener('c
 demo && demo.addEventListener('click', e => { if (e.target === demo) demo.close(); });
 
 // vídeos: mudos, em loop, sem controles; tocam quando aparecem na tela
-const videos = [...document.querySelectorAll('.quadro video')];
+const videos = [...document.querySelectorAll('.vid video, .ph video')];
 videos.forEach(v => { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; v.controls = false; });
 const tenta = v => { if (v.paused) v.play().catch(() => {}); };
 const naTela = v => { const r = v.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
@@ -63,11 +63,11 @@ function ligaSom(q) {
 const loops = new IntersectionObserver(es => es.forEach(e => {
   const v = e.target;
   if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; tenta(v); }
-  else { v.pause(); const q = v.closest('.quadro'); if (q && q === comSom) silencia(q); }
+  else { v.pause(); const q = v.closest('.vid'); if (q && q === comSom) silencia(q); }
 }), { threshold: 0.2 });
 videos.forEach(v => loops.observe(v));
-document.querySelectorAll('.quadro .som').forEach(b => {
-  const q = b.closest('.quadro');
+document.querySelectorAll('.vid .som').forEach(b => {
+  const q = b.closest('.vid');
   b.addEventListener('click', e => { e.stopPropagation(); q.querySelector('video').muted ? ligaSom(q) : silencia(q); });
 });
 // iPhone em economia de bateria bloqueia autoplay: o primeiro toque libera
