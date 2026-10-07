@@ -307,9 +307,9 @@ dialog.demo .btn{padding:14px 22px;font-size:10px}
 .faq summary::after{content:"+";font-family:var(--sans);font-weight:300;font-size:22px;color:var(--gold-3);flex:none;transition:transform .3s}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{padding:0 0 22px;color:var(--ink-2);max-width:34em}
-.quem{display:grid;grid-template-columns:140px 1fr;gap:28px;align-items:center;max-width:40em}
-.quem b{display:block;font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.03em;margin-bottom:6px;color:var(--ink)}
-.quem p{color:var(--ink-2);font-size:15px}
+.quem-faz{display:grid;grid-template-columns:140px 1fr;gap:28px;align-items:center;max-width:40em}
+.quem-faz b{display:block;font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.03em;margin-bottom:6px;color:var(--ink)}
+.quem-faz p{color:var(--ink-2);font-size:15px}
 .aviso-info{font-size:13px;color:var(--ink-3);border-top:1px solid var(--hair-light);padding-top:18px;max-width:40em;margin-top:34px}
 
 /* celular */
@@ -348,7 +348,7 @@ dialog.demo .btn{padding:14px 22px;font-size:10px}
   footer .marca{grid-column:1/-1}
   .ficha{grid-template-columns:1fr 1fr;gap:0 24px}
   .bloco{grid-template-columns:1fr;gap:18px}
-  .quem{grid-template-columns:110px 1fr}
+  .quem-faz{grid-template-columns:110px 1fr}
   .ph-wrap .luz{display:none}
 }
 @media (max-width:520px){
